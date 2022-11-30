@@ -1,0 +1,52 @@
+﻿<Page x:Class="tren2_Gorodkov.AddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:tren2_Gorodkov"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label Content="Введите данные агента" HorizontalAlignment="Center" FontSize="30" Grid.ColumnSpan="2" />
+        <TextBlock Margin="10 0 10 0" Text="Тип агента" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
+        <TextBox Text="{Binding AgentType}" Grid.Row="1" Grid.Column="1" Height="30" />
+        <TextBlock Margin="10 0 10 0" Text="Имя агента" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
+        <TextBox Text="{Binding AgentName}" Grid.Row="2" Grid.Column="1" Height="30" />
+        <TextBlock Margin="10 0 10 0" Text="Email агента" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
+        <TextBox Text="{Binding AgentEmail}" Grid.Row="3" Grid.Column="1" Height="30" />
+        <TextBlock Margin="10 0 10 0" Text="Номер телефона агента" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
+        <TextBox Text="{Binding AgentPhone}" Grid.Row="4" Grid.Column="1" Height="30" />
+        <TextBlock Margin="10 0 10 0" Text="Ссылка на логотип агента" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
+        <TextBox Text="{Binding AgentLogo}" Grid.Row="5" Grid.Column="1" Height="30" />
+        <TextBlock Margin="10 0 10 0" Text="Приоритет" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
+        <TextBox Text="{Binding Priority}" Grid.Row="6" Grid.Column="1" Height="30" />
+        <TextBlock Margin="10 0 10 0" Text="ФИО директора" Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
+        <TextBox Text="{Binding Director}" Grid.Row="7" Grid.Column="1" Height="30" />
+        <TextBlock Margin="10 0 10 0" Text="ИНН" Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
+        <TextBox Text="{Binding INN}" Grid.Row="8" Grid.Column="1" Height="30" />
+        <TextBlock Margin="10 0 10 0" Text="КПП" Grid.Row="9" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
+        <TextBox Text="{Binding KPP}" Grid.Row="9" Grid.Column="1" Height="30" />
+        <Button Content=""
+
+
+    </Grid>
+</Page>

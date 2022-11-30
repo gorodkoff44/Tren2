@@ -42,3 +42,7 @@ C:\Users\comp0705\Desktop\Data\Tren2\Сессия 1\WPF\tren2_Gorodkov\Tren2\obj
 C:\Users\comp0705\Desktop\Data\Tren2\Сессия 1\WPF\tren2_Gorodkov\Tren2\obj\Debug\tren2_Gorodkov.csproj.CopyComplete
 C:\Users\comp0705\Desktop\Data\Tren2\Сессия 1\WPF\tren2_Gorodkov\Tren2\obj\Debug\tren2_Gorodkov.exe
 C:\Users\comp0705\Desktop\Data\Tren2\Сессия 1\WPF\tren2_Gorodkov\Tren2\obj\Debug\tren2_Gorodkov.pdb
+C:\Users\comp0705\Desktop\Data\Tren2\Сессия 1\WPF\tren2_Gorodkov\Tren2\obj\Debug\HomePage.g.cs
+C:\Users\comp0705\Desktop\Data\Tren2\Сессия 1\WPF\tren2_Gorodkov\Tren2\obj\Debug\HomePage.baml
+C:\Users\comp0705\Desktop\Data\Tren2\Сессия 1\WPF\tren2_Gorodkov\Tren2\obj\Debug\AddPage.g.cs
+C:\Users\comp0705\Desktop\Data\Tren2\Сессия 1\WPF\tren2_Gorodkov\Tren2\obj\Debug\AddPage.baml

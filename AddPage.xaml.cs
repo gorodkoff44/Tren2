@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace tren2_Gorodkov
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для AddPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddPage : Page
     {
-        public MainWindow()
+        public AddPage()
         {
             InitializeComponent();
         }
-
-       
     }
 }
