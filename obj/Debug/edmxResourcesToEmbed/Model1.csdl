@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Tren2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="agents">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AgentType" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AgentName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AgentEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="AgentPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="AgentLogo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LegalAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Priority" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Director" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="INN" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KPP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="productsale" Relationship="Self.FK_productsale_agents" FromRole="agents" ToRole="productsale" />
+  </EntityType>
+  <EntityType Name="products_short">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameOfProduct" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="VendorCode" Type="Double" Nullable="false" />
+    <Property Name="NumberOfPeopleForProduction" Type="Double" Nullable="false" />
+    <Property Name="ProductionShopNumber" Type="Double" Nullable="false" />
+    <Property Name="MinimumPriceForAgent" Type="Double" Nullable="false" />
+    <NavigationProperty Name="productsale" Relationship="Self.FK_productsale_products_short" FromRole="products_short" ToRole="productsale" />
+  </EntityType>
+  <EntityType Name="productsale">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProduct" Type="Int32" Nullable="false" />
+    <Property Name="IdAgent" Type="Int32" Nullable="false" />
+    <Property Name="ImplementationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NumberOfProducts" Type="Double" Nullable="false" />
+    <NavigationProperty Name="agents" Relationship="Self.FK_productsale_agents" FromRole="productsale" ToRole="agents" />
+    <NavigationProperty Name="products_short" Relationship="Self.FK_productsale_products_short" FromRole="productsale" ToRole="products_short" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_productsale_agents">
+    <End Role="agents" Type="Self.agents" Multiplicity="1" />
+    <End Role="productsale" Type="Self.productsale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="agents">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="productsale">
+        <PropertyRef Name="IdAgent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_productsale_products_short">
+    <End Role="products_short" Type="Self.products_short" Multiplicity="1" />
+    <End Role="productsale" Type="Self.productsale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products_short">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="productsale">
+        <PropertyRef Name="IdProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Tren2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="agents" EntityType="Self.agents" />
+    <EntitySet Name="products_short" EntityType="Self.products_short" />
+    <EntitySet Name="productsale" EntityType="Self.productsale" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_productsale_agents" Association="Self.FK_productsale_agents">
+      <End Role="agents" EntitySet="agents" />
+      <End Role="productsale" EntitySet="productsale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_productsale_products_short" Association="Self.FK_productsale_products_short">
+      <End Role="products_short" EntitySet="products_short" />
+      <End Role="productsale" EntitySet="productsale" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
