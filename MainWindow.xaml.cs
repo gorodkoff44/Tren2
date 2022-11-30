@@ -25,9 +25,21 @@ namespace tren2_Gorodkov
             InitializeComponent();
             var current_agent = Tren2Entities.GetContext().agents.ToList();
             LVAgent.ItemsSource = current_agent;
+            UpdateAgent();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            var current_agent = Tren2Entities.GetContext().agents.ToList();
+            current_agent = current_agent.Where(p => p.AgentName.ToLower().Contains(TBSearch.Text.ToLower())).ToList();
+        }
+        private void UpdateAgent ()
+        {
+            var current_agent = Tren2Entities.GetContext().agents.ToList();
+            current_agent = current_agent.Where(p => p.AgentName.ToLower().Contains(TBSearch.Text.ToLower())).ToList();
+            UpdateAgent();
+        }
+        private void TBSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
