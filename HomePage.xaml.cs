@@ -20,21 +20,16 @@ namespace tren2_Gorodkov
     /// </summary>
     public partial class HomePage : Page
     {
+        private Tren2Entities1 _context = new Tren2Entities1();
         public HomePage()
         {
             InitializeComponent();
-            var current_agent = Tren2Entities.GetContext().agents.ToList();
-            LVAgent.ItemsSource = current_agent;
+            LVAgent.ItemsSource = _context.agents.ToList();
+            
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/AddPage.xaml", UriKind.Relative));
-        }
-        private void UpdateAgent()
-        {
-            //var current_agent = Tren2Entities.GetContext().agents.ToList();
-            //current_agent = current_agent.Where(p => p.AgentName.ToLower().Contains(TBSearch.Text.ToLower())).ToList();
-            //UpdateAgent();
         }
         private void TBSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -42,6 +37,11 @@ namespace tren2_Gorodkov
                 plh.Visibility = Visibility.Visible;
             else
                 plh.Visibility = Visibility.Collapsed;
+        }
+
+        private void ComboFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

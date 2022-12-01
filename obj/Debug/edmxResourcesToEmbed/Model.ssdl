@@ -66,7 +66,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AgentType" Type="nchar" MaxLength="10" />
+    <Property Name="TypeAgent" Type="nchar" MaxLength="10" />
   </EntityType>
   <Association Name="FK_agents_Director">
     <End Role="Director" Type="Self.Director" Multiplicity="1" />

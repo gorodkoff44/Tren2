@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище Tren2ModelContainer" CdmEntityContainer="Tren2Entities1">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Tren2ModelContainer" CdmEntityContainer="TrenEntities">
     <EntitySetMapping Name="agents">
       <EntityTypeMapping TypeName="Tren2Model.agents">
         <MappingFragment StoreEntitySet="agents">
@@ -72,7 +72,7 @@
       <EntityTypeMapping TypeName="Tren2Model.TypeAgent">
         <MappingFragment StoreEntitySet="TypeAgent">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="AgentType" ColumnName="AgentType" />
+          <ScalarProperty Name="TypeAgent1" ColumnName="TypeAgent" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

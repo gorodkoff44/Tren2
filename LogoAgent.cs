@@ -12,12 +12,18 @@ namespace tren2_Gorodkov
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class LogoAgent
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LogoAgent()
+        {
+            this.agents = new HashSet<agents>();
+        }
+    
+        public int ID { get; set; }
+        public string AgentLogo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<agents> agents { get; set; }
     }
 }

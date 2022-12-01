@@ -12,31 +12,18 @@ namespace tren2_Gorodkov
     using System;
     using System.Collections.Generic;
     
-    public partial class agents
+    public partial class TypeAgent
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public agents()
+        public TypeAgent()
         {
-            this.productsale = new HashSet<productsale>();
+            this.agents = new HashSet<agents>();
         }
     
         public int ID { get; set; }
-        public string AgentName { get; set; }
-        public string AgentEmail { get; set; }
-        public string AgentPhone { get; set; }
-        public Nullable<int> AgentLogoID { get; set; }
-        public int LegalAddressID { get; set; }
-        public string Priority { get; set; }
-        public int DirectorID { get; set; }
-        public string INN { get; set; }
-        public string KPP { get; set; }
-        public Nullable<int> TypeAgentID { get; set; }
+        public string AgentType { get; set; }
     
-        public virtual Director Director { get; set; }
-        public virtual LegalAddress LegalAddress { get; set; }
-        public virtual LogoAgent LogoAgent { get; set; }
-        public virtual TypeAgent TypeAgent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<productsale> productsale { get; set; }
+        public virtual ICollection<agents> agents { get; set; }
     }
 }

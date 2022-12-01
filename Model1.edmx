@@ -7,25 +7,48 @@
       <Schema Namespace="Хранилище Tren2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="agents">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AgentType" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AgentName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="AgentEmail" Type="varchar" MaxLength="255" />
           <Property Name="AgentPhone" Type="varchar" MaxLength="255" />
-          <Property Name="AgentLogo" Type="varchar" MaxLength="255" />
-          <Property Name="LegalAddress" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="AgentLogoID" Type="int" />
+          <Property Name="LegalAddressID" Type="int" Nullable="false" />
           <Property Name="Priority" Type="varchar" MaxLength="4" />
-          <Property Name="Director" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DirectorID" Type="int" Nullable="false" />
           <Property Name="INN" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="KPP" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="TypeAgentID" Type="int" />
+        </EntityType>
+        <EntityType Name="Director">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="F" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="I" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="O" Type="nchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="LegalAddress">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address" Type="nchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="LogoAgent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentLogo" Type="nchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="products_short">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameOfProduct" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="ProductType" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="VendorCode" Type="float" Nullable="false" />
@@ -35,30 +58,75 @@
         </EntityType>
         <EntityType Name="productsale">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdProduct" Type="int" Nullable="false" />
           <Property Name="IdAgent" Type="int" Nullable="false" />
           <Property Name="ImplementationDate" Type="datetime" Nullable="false" />
           <Property Name="NumberOfProducts" Type="float" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="TypeAgent">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentType" Type="nchar" MaxLength="10" />
         </EntityType>
+        <Association Name="FK_agents_Director">
+          <End Role="Director" Type="Self.Director" Multiplicity="1" />
+          <End Role="agents" Type="Self.agents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Director">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="agents">
+              <PropertyRef Name="DirectorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_agents_LegalAddress">
+          <End Role="LegalAddress" Type="Self.LegalAddress" Multiplicity="1" />
+          <End Role="agents" Type="Self.agents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LegalAddress">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="agents">
+              <PropertyRef Name="LegalAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_agents_LogoAgent">
+          <End Role="LogoAgent" Type="Self.LogoAgent" Multiplicity="0..1" />
+          <End Role="agents" Type="Self.agents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogoAgent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="agents">
+              <PropertyRef Name="AgentLogoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_agents_TypeAgent">
+          <End Role="TypeAgent" Type="Self.TypeAgent" Multiplicity="0..1" />
+          <End Role="agents" Type="Self.agents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeAgent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="agents">
+              <PropertyRef Name="TypeAgentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_productsale_agents">
           <End Role="agents" Type="Self.agents" Multiplicity="1" />
           <End Role="productsale" Type="Self.productsale" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="agents">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="productsale">
               <PropertyRef Name="IdAgent" />
@@ -70,7 +138,7 @@
           <End Role="productsale" Type="Self.productsale" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="products_short">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="productsale">
               <PropertyRef Name="IdProduct" />
@@ -79,9 +147,28 @@
         </Association>
         <EntityContainer Name="Хранилище Tren2ModelContainer">
           <EntitySet Name="agents" EntityType="Self.agents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Director" EntityType="Self.Director" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LegalAddress" EntityType="Self.LegalAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogoAgent" EntityType="Self.LogoAgent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="products_short" EntityType="Self.products_short" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="productsale" EntityType="Self.productsale" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeAgent" EntityType="Self.TypeAgent" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_agents_Director" Association="Self.FK_agents_Director">
+            <End Role="Director" EntitySet="Director" />
+            <End Role="agents" EntitySet="agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_agents_LegalAddress" Association="Self.FK_agents_LegalAddress">
+            <End Role="LegalAddress" EntitySet="LegalAddress" />
+            <End Role="agents" EntitySet="agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_agents_LogoAgent" Association="Self.FK_agents_LogoAgent">
+            <End Role="LogoAgent" EntitySet="LogoAgent" />
+            <End Role="agents" EntitySet="agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_agents_TypeAgent" Association="Self.FK_agents_TypeAgent">
+            <End Role="TypeAgent" EntitySet="TypeAgent" />
+            <End Role="agents" EntitySet="agents" />
+          </AssociationSet>
           <AssociationSet Name="FK_productsale_agents" Association="Self.FK_productsale_agents">
             <End Role="agents" EntitySet="agents" />
             <End Role="productsale" EntitySet="productsale" />
@@ -98,26 +185,56 @@
       <Schema Namespace="Tren2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="agents">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AgentType" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AgentName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AgentEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="AgentPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="AgentLogo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="LegalAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AgentLogoID" Type="Int32" />
+          <Property Name="LegalAddressID" Type="Int32" Nullable="false" />
           <Property Name="Priority" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="Director" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DirectorID" Type="Int32" Nullable="false" />
           <Property Name="INN" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="KPP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TypeAgentID" Type="Int32" />
+          <NavigationProperty Name="Director" Relationship="Self.FK_agents_Director" FromRole="agents" ToRole="Director" />
+          <NavigationProperty Name="LegalAddress" Relationship="Self.FK_agents_LegalAddress" FromRole="agents" ToRole="LegalAddress" />
+          <NavigationProperty Name="LogoAgent" Relationship="Self.FK_agents_LogoAgent" FromRole="agents" ToRole="LogoAgent" />
+          <NavigationProperty Name="TypeAgent" Relationship="Self.FK_agents_TypeAgent" FromRole="agents" ToRole="TypeAgent" />
           <NavigationProperty Name="productsale" Relationship="Self.FK_productsale_agents" FromRole="agents" ToRole="productsale" />
+        </EntityType>
+        <EntityType Name="Director">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="F" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="I" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="O" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="agents" Relationship="Self.FK_agents_Director" FromRole="Director" ToRole="agents" />
+        </EntityType>
+        <EntityType Name="LegalAddress">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="agents" Relationship="Self.FK_agents_LegalAddress" FromRole="LegalAddress" ToRole="agents" />
+        </EntityType>
+        <EntityType Name="LogoAgent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentLogo" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="agents" Relationship="Self.FK_agents_LogoAgent" FromRole="LogoAgent" ToRole="agents" />
         </EntityType>
         <EntityType Name="products_short">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameOfProduct" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProductType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="VendorCode" Type="Double" Nullable="false" />
@@ -128,9 +245,9 @@
         </EntityType>
         <EntityType Name="productsale">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdProduct" Type="Int32" Nullable="false" />
           <Property Name="IdAgent" Type="Int32" Nullable="false" />
           <Property Name="ImplementationDate" Type="DateTime" Nullable="false" Precision="3" />
@@ -138,22 +255,68 @@
           <NavigationProperty Name="agents" Relationship="Self.FK_productsale_agents" FromRole="productsale" ToRole="agents" />
           <NavigationProperty Name="products_short" Relationship="Self.FK_productsale_products_short" FromRole="productsale" ToRole="products_short" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="TypeAgent">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="agents" Relationship="Self.FK_agents_TypeAgent" FromRole="TypeAgent" ToRole="agents" />
         </EntityType>
+        <Association Name="FK_agents_Director">
+          <End Role="Director" Type="Self.Director" Multiplicity="1" />
+          <End Role="agents" Type="Self.agents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Director">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="agents">
+              <PropertyRef Name="DirectorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_agents_LegalAddress">
+          <End Role="LegalAddress" Type="Self.LegalAddress" Multiplicity="1" />
+          <End Role="agents" Type="Self.agents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LegalAddress">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="agents">
+              <PropertyRef Name="LegalAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_agents_LogoAgent">
+          <End Role="LogoAgent" Type="Self.LogoAgent" Multiplicity="0..1" />
+          <End Role="agents" Type="Self.agents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogoAgent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="agents">
+              <PropertyRef Name="AgentLogoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_agents_TypeAgent">
+          <End Role="TypeAgent" Type="Self.TypeAgent" Multiplicity="0..1" />
+          <End Role="agents" Type="Self.agents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeAgent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="agents">
+              <PropertyRef Name="TypeAgentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_productsale_agents">
           <End Role="agents" Type="Self.agents" Multiplicity="1" />
           <End Role="productsale" Type="Self.productsale" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="agents">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="productsale">
               <PropertyRef Name="IdAgent" />
@@ -165,18 +328,37 @@
           <End Role="productsale" Type="Self.productsale" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="products_short">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="productsale">
               <PropertyRef Name="IdProduct" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Tren2Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Tren2Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="agents" EntityType="Self.agents" />
+          <EntitySet Name="Director" EntityType="Self.Director" />
+          <EntitySet Name="LegalAddress" EntityType="Self.LegalAddress" />
+          <EntitySet Name="LogoAgent" EntityType="Self.LogoAgent" />
           <EntitySet Name="products_short" EntityType="Self.products_short" />
           <EntitySet Name="productsale" EntityType="Self.productsale" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TypeAgent" EntityType="Self.TypeAgent" />
+          <AssociationSet Name="FK_agents_Director" Association="Self.FK_agents_Director">
+            <End Role="Director" EntitySet="Director" />
+            <End Role="agents" EntitySet="agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_agents_LegalAddress" Association="Self.FK_agents_LegalAddress">
+            <End Role="LegalAddress" EntitySet="LegalAddress" />
+            <End Role="agents" EntitySet="agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_agents_LogoAgent" Association="Self.FK_agents_LogoAgent">
+            <End Role="LogoAgent" EntitySet="LogoAgent" />
+            <End Role="agents" EntitySet="agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_agents_TypeAgent" Association="Self.FK_agents_TypeAgent">
+            <End Role="TypeAgent" EntitySet="TypeAgent" />
+            <End Role="agents" EntitySet="agents" />
+          </AssociationSet>
           <AssociationSet Name="FK_productsale_agents" Association="Self.FK_productsale_agents">
             <End Role="agents" EntitySet="agents" />
             <End Role="productsale" EntitySet="productsale" />
@@ -191,28 +373,54 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище Tren2ModelContainer" CdmEntityContainer="Tren2Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Tren2ModelContainer" CdmEntityContainer="Tren2Entities1">
           <EntitySetMapping Name="agents">
             <EntityTypeMapping TypeName="Tren2Model.agents">
               <MappingFragment StoreEntitySet="agents">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="AgentType" ColumnName="AgentType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="AgentName" ColumnName="AgentName" />
                 <ScalarProperty Name="AgentEmail" ColumnName="AgentEmail" />
                 <ScalarProperty Name="AgentPhone" ColumnName="AgentPhone" />
-                <ScalarProperty Name="AgentLogo" ColumnName="AgentLogo" />
-                <ScalarProperty Name="LegalAddress" ColumnName="LegalAddress" />
+                <ScalarProperty Name="AgentLogoID" ColumnName="AgentLogoID" />
+                <ScalarProperty Name="LegalAddressID" ColumnName="LegalAddressID" />
                 <ScalarProperty Name="Priority" ColumnName="Priority" />
-                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="DirectorID" ColumnName="DirectorID" />
                 <ScalarProperty Name="INN" ColumnName="INN" />
                 <ScalarProperty Name="KPP" ColumnName="KPP" />
+                <ScalarProperty Name="TypeAgentID" ColumnName="TypeAgentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Director">
+            <EntityTypeMapping TypeName="Tren2Model.Director">
+              <MappingFragment StoreEntitySet="Director">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="F" ColumnName="F" />
+                <ScalarProperty Name="I" ColumnName="I" />
+                <ScalarProperty Name="O" ColumnName="O" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LegalAddress">
+            <EntityTypeMapping TypeName="Tren2Model.LegalAddress">
+              <MappingFragment StoreEntitySet="LegalAddress">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogoAgent">
+            <EntityTypeMapping TypeName="Tren2Model.LogoAgent">
+              <MappingFragment StoreEntitySet="LogoAgent">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AgentLogo" ColumnName="AgentLogo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="products_short">
             <EntityTypeMapping TypeName="Tren2Model.products_short">
               <MappingFragment StoreEntitySet="products_short">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NameOfProduct" ColumnName="NameOfProduct" />
                 <ScalarProperty Name="ProductType" ColumnName="ProductType" />
                 <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
@@ -225,7 +433,7 @@
           <EntitySetMapping Name="productsale">
             <EntityTypeMapping TypeName="Tren2Model.productsale">
               <MappingFragment StoreEntitySet="productsale">
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
                 <ScalarProperty Name="IdAgent" ColumnName="IdAgent" />
                 <ScalarProperty Name="ImplementationDate" ColumnName="ImplementationDate" />
@@ -233,14 +441,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Tren2Model.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+          <EntitySetMapping Name="TypeAgent">
+            <EntityTypeMapping TypeName="Tren2Model.TypeAgent">
+              <MappingFragment StoreEntitySet="TypeAgent">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AgentType" ColumnName="AgentType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

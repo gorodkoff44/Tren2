@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:tren2_Gorodkov"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="HomePage">
+      Title="Попрыженок"  >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -31,32 +31,33 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" VerticalAlignment="Center">
                 <TextBox VerticalContentAlignment="Center" FontFamily="Comic Sans MS" x:Name="TBSearch" TextChanged="TBSearch_TextChanged"  Background="White" Foreground="Black" HorizontalAlignment="Center" TextWrapping="Wrap" Width="320" Height="40" Focusable="True" />
-                <TextBlock x:Name="plh"  Text="Введите для поиска" VerticalAlignment="Center" Margin="20,12,204,12" Foreground="Gray" FontFamily="Comic Sans MS" Visibility="Visible" />
+                <TextBlock x:Name="plh" FontSize="14" Text="Введите для поиска" VerticalAlignment="Center" Margin="20,0,0,0" Foreground="Gray" FontFamily="Comic Sans MS" Visibility="Visible" Width="140" HorizontalAlignment="Left" />
             </Grid>
-            <ComboBox FontFamily="Comic Sans MS" VerticalContentAlignment="Center" IsEditable="true" Background="White" Foreground="Black" x:Name="Sort" FontSize="14" Text="Сортировка" Grid.Column="1" Height="40" Margin="0 0 0 0">
+            <ComboBox FontFamily="Comic Sans MS" VerticalContentAlignment="Center" IsEditable="true" Background="White" Foreground="Black" x:Name="ComboSort" FontSize="14" Text="Сортировка" Grid.Column="1" Height="40" Margin="0 0 0 0">
                 <TextBlock>A</TextBlock>
                 <TextBlock>B</TextBlock>
                 <TextBlock>C</TextBlock>
             </ComboBox>
-            <ComboBox VerticalContentAlignment="Center" FontFamily="Comic Sans MS" IsEditable="true" Margin="20 0 20 0" Background="White" Foreground="Black" x:Name="Filtr" Text="Фильтрация" Grid.Column="2" Height="40" />
+            <ComboBox SelectionChanged="ComboFilter_SelectionChanged" VerticalContentAlignment="Center" FontFamily="Comic Sans MS" IsEditable="true" Margin="20 0 20 0" Background="White" Foreground="Black" x:Name="ComboFilter" Text="Фильтрация" Grid.Column="2" Height="40" FontSize="14" />
         </Grid>
         <Grid Grid.Row="3">
-            <Button FontFamily="Comic Sans MS" Content="Добавить" x:Name="Add" Click="Add_Click" Background="#43DCFE" Foreground="White" Width="80" HorizontalAlignment="Center" Margin="0 5 0 5" />
+            <Button FontSize="14" FontFamily="Comic Sans MS" Content="Добавить" x:Name="Add" Click="Add_Click" Background="#43DCFE" Foreground="White" Width="80" HorizontalAlignment="Center" Margin="0 5 0 5" />
         </Grid>
         <Grid Grid.Row="2">
             <ListBox x:Name="LVAgent">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid VerticalAlignment="Center" Margin="20">
+                        <Grid>
+                            <Grid VerticalAlignment="Center" Margin="20">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
                                 <ColumnDefinition />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0"  Source="{Binding AgentLogo}" Stretch="UniformToFill" />
-                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="25 0 0 0">
+                                <Image Grid.Column="0"  Source="{Binding LogoAgent.AgentLogo}" Stretch="UniformToFill" />
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="25 0 0 0">
                                 <WrapPanel>
-                                    <TextBlock FontSize="14" FontFamily="Comic Sans MS" Text="{Binding AgentType}" />
+                                    <TextBlock FontSize="14" FontFamily="Comic Sans MS" Text="{Binding TypeAgent.AgentType}" />
                                     <TextBlock FontSize="14" FontFamily="Comic Sans MS" Text=" | " />
                                     <TextBlock FontSize="14" FontFamily="Comic Sans MS" Text="{Binding AgentName}" />
                                 </WrapPanel>
@@ -64,6 +65,7 @@
                                 <TextBlock FontFamily="Comic Sans MS" Text="{Binding AgentPhone}" />
                                 <TextBlock FontFamily="Comic Sans MS" Text="{Binding Priority, StringFormat=Приоритетность: {0}}" />
                             </StackPanel>
+                        </Grid>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

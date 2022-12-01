@@ -77,7 +77,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AgentType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TypeAgent1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="agents" Relationship="Self.FK_agents_TypeAgent" FromRole="TypeAgent" ToRole="agents" />
   </EntityType>
   <Association Name="FK_agents_Director">
@@ -152,7 +152,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Tren2Entities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="TrenEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="agents" EntityType="Self.agents" />
     <EntitySet Name="Director" EntityType="Self.Director" />
     <EntitySet Name="LegalAddress" EntityType="Self.LegalAddress" />

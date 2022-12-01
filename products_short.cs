@@ -20,7 +20,7 @@ namespace tren2_Gorodkov
             this.productsale = new HashSet<productsale>();
         }
     
-        public int id { get; set; }
+        public int ID { get; set; }
         public string NameOfProduct { get; set; }
         public string ProductType { get; set; }
         public double VendorCode { get; set; }

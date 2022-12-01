@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tren2_Gorodkov"
         mc:Ignorable="d"
-        Title="Попрыженок" Height="450" Width="800" Icon="/Resources/Попрыженок.ico">
+        Title="Попрыженок" Height="450" Width="800" Icon="/Resources/Попрыженок.ico" MinWidth="800" MinHeight="450" >
     <Grid>
         <Frame x:Name="SV" Source="HomePage.xaml"></Frame>
     </Grid>

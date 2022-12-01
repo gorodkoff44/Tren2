@@ -14,7 +14,7 @@ namespace tren2_Gorodkov
     
     public partial class productsale
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public int IdProduct { get; set; }
         public int IdAgent { get; set; }
         public System.DateTime ImplementationDate { get; set; }

@@ -20,9 +20,21 @@ namespace tren2_Gorodkov
     /// </summary>
     public partial class AddPage : Page
     {
+        private Tren2Entities1 _context = new Tren2Entities1();
         public AddPage()
         {
             InitializeComponent();
+            
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

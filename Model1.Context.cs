@@ -13,20 +13,12 @@ namespace tren2_Gorodkov
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Tren2Entities : DbContext
+    public partial class Tren2Entities1 : DbContext
     {
-        private static Tren2Entities _context;
-        public Tren2Entities()
-            : base("name=Tren2Entities")
+        public Tren2Entities1()
+            : base("name=Tren2Entities1")
         {
         }
-        public static Tren2Entities GetContext()
-        {
-            if (_context == null)
-                _context = new Tren2Entities();
-                return _context;
-        }
-
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,8 +26,11 @@ namespace tren2_Gorodkov
         }
     
         public virtual DbSet<agents> agents { get; set; }
+        public virtual DbSet<Director> Director { get; set; }
+        public virtual DbSet<LegalAddress> LegalAddress { get; set; }
+        public virtual DbSet<LogoAgent> LogoAgent { get; set; }
         public virtual DbSet<products_short> products_short { get; set; }
         public virtual DbSet<productsale> productsale { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TypeAgent> TypeAgent { get; set; }
     }
 }

@@ -36,17 +36,16 @@
         <TextBlock Margin="10 0 10 0" Text="Номер телефона агента" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
         <TextBox Text="{Binding AgentPhone}" Grid.Row="4" Grid.Column="1" Height="30" />
         <TextBlock Margin="10 0 10 0" Text="Ссылка на логотип агента" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
-        <TextBox Text="{Binding AgentLogo}" Grid.Row="5" Grid.Column="1" Height="30" />
+        <TextBox Text="{Binding LogoAgent.AgentLogo}" Grid.Row="5" Grid.Column="1" Height="30" />
         <TextBlock Margin="10 0 10 0" Text="Приоритет" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
         <TextBox Text="{Binding Priority}" Grid.Row="6" Grid.Column="1" Height="30" />
         <TextBlock Margin="10 0 10 0" Text="ФИО директора" Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
-        <TextBox Text="{Binding Director}" Grid.Row="7" Grid.Column="1" Height="30" />
+        <TextBox Text="{Binding Director.F}" Grid.Row="7" Grid.Column="1" Height="30" />
         <TextBlock Margin="10 0 10 0" Text="ИНН" Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
         <TextBox Text="{Binding INN}" Grid.Row="8" Grid.Column="1" Height="30" />
         <TextBlock Margin="10 0 10 0" Text="КПП" Grid.Row="9" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
         <TextBox Text="{Binding KPP}" Grid.Row="9" Grid.Column="1" Height="30" />
-        <Button Content=""
-
-
+        <Button Grid.Row="10" Grid.Column="1" FontFamily="Comic Sans MS" Content="Сохранить" x:Name="btnSave" Click="btnSave_Click"  Background="#43DCFE" Foreground="White" Width="100" Height="35" FontSize="14" />
+        <Button Grid.Row="10" Grid.Column="0" FontFamily="Comic Sans MS" Content="Отменить" x:Name="btnCancel" Click="btnCancel_Click"  Background="#43DCFE" Foreground="White" Width="80" Height="35" FontSize="14" />
     </Grid>
 </Page>
