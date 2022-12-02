@@ -24,7 +24,7 @@ namespace tren2_Gorodkov
         public AddPage()
         {
             InitializeComponent();
-            
+            DataContext = _context.agents;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
