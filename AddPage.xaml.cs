@@ -20,16 +20,18 @@ namespace tren2_Gorodkov
     /// </summary>
     public partial class AddPage : Page
     {
+        //private Tren2Entities1 _currentStrahov = new Tren2Entities1();
         private Tren2Entities1 _context = new Tren2Entities1();
         public AddPage()
         {
             InitializeComponent();
-            DataContext = _context.agents;
+            DataContext = _context;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-
+            _context.SaveChanges();
+            NavigationService.GoBack();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

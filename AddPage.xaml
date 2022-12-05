@@ -30,17 +30,17 @@
         <TextBlock Margin="10 0 10 0" Text="Тип агента" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
         <!--<TextBox Text="{Binding AgentType}" Grid.Row="1" Grid.Column="1" Height="30" />
         <TextBlock Margin="10 0 10 0" Text="Имя агента" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />-->
-        <TextBox Text="{Binding AgentName}" Grid.Row="2" Grid.Column="1" Height="30" />
+        <TextBox Text="{Binding AgentName}" Grid.Row="1" Grid.Column="1" Height="30" Name="tbName" />
         <TextBlock Margin="10 0 10 0" Text="Email агента" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
         <TextBox Text="{Binding AgentEmail}" Grid.Row="3" Grid.Column="1" Height="30" />
         <TextBlock Margin="10 0 10 0" Text="Номер телефона агента" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
         <TextBox Text="{Binding AgentPhone}" Grid.Row="4" Grid.Column="1" Height="30" />
         <TextBlock Margin="10 0 10 0" Text="Ссылка на логотип агента" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
-        <TextBox Text="{Binding LogoAgent.AgentLogo}" Grid.Row="5" Grid.Column="1" Height="30" />
+        <!--<TextBox Text="{Binding LogoAgent.AgentLogo}" Grid.Row="5" Grid.Column="1" Height="30" />-->
         <TextBlock Margin="10 0 10 0" Text="Приоритет" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
         <TextBox Text="{Binding Priority}" Grid.Row="6" Grid.Column="1" Height="30" />
         <TextBlock Margin="10 0 10 0" Text="ФИО директора" Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
-        <TextBox Text="{Binding Director.F}" Grid.Row="7" Grid.Column="1" Height="30" />
+        <!--<TextBox Text="{Binding Director.F}" Grid.Row="7" Grid.Column="1" Height="30" />-->
         <TextBlock Margin="10 0 10 0" Text="ИНН" Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />
         <TextBox Text="{Binding INN}" Grid.Row="8" Grid.Column="1" Height="30" />
         <TextBlock Margin="10 0 10 0" Text="КПП" Grid.Row="9" Grid.Column="0" VerticalAlignment="Center" FontSize="14" />

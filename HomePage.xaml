@@ -41,7 +41,10 @@
             <ComboBox SelectionChanged="ComboFilter_SelectionChanged" VerticalContentAlignment="Center" FontFamily="Comic Sans MS" IsEditable="true" Margin="20 0 20 0" Background="White" Foreground="Black" x:Name="ComboFilter" Text="Фильтрация" Grid.Column="2" Height="40" FontSize="14" DisplayMemberPath="AgentType" />
         </Grid>
         <Grid Grid.Row="3">
-            <Button FontSize="14" FontFamily="Comic Sans MS" Content="Добавить" x:Name="Add" Click="Add_Click" Background="#43DCFE" Foreground="White" Width="80" HorizontalAlignment="Center" Margin="0 5 0 5" />
+            <WrapPanel HorizontalAlignment="Center">
+                <Button FontSize="14" FontFamily="Comic Sans MS" Content="Добавить" x:Name="Add" Click="Add_Click" Background="#43DCFE" Foreground="White" Width="80" HorizontalAlignment="Center" Margin="0 5 0 5" />
+                <Button FontSize="14" FontFamily="Comic Sans MS" Content="Удалить" x:Name="Del" Click="Del_Click"  Background="#43DCFE" Foreground="White" Width="80" HorizontalAlignment="Center" Margin="10 5 0 5" />
+            </WrapPanel>
         </Grid>
         <Grid Grid.Row="2">
             <ListBox x:Name="LVAgent">

@@ -66,5 +66,12 @@ namespace tren2_Gorodkov
         {
 
         }
+
+        private void Del_Click(object sender, RoutedEventArgs e)
+        {
+            _context.agents.Remove((agents)LVAgent.SelectedItem);
+            _context.SaveChanges();
+            UpdateAgents();
+        }
     }
 }
