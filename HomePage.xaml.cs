@@ -51,7 +51,8 @@ namespace tren2_Gorodkov
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/AddPage.xaml", UriKind.Relative));
+            //NavigationService.Navigate(new Uri("/AddPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new AddPage(null));
         }
         private void TBSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -72,6 +73,11 @@ namespace tren2_Gorodkov
             _context.agents.Remove((agents)LVAgent.SelectedItem);
             _context.SaveChanges();
             UpdateAgents();
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddPage((sender as Button).DataContext as agents));
         }
     }
 }

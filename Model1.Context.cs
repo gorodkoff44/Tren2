@@ -15,9 +15,16 @@ namespace tren2_Gorodkov
     
     public partial class Tren2Entities1 : DbContext
     {
+        private static Tren2Entities1 _context = new Tren2Entities1();
         public Tren2Entities1()
             : base("name=Tren2Entities1")
         {
+        }
+        public static Tren2Entities1 GetContext()
+        {
+            if (_context == null)
+                _context = new Tren2Entities1();
+            return _context;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

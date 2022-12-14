@@ -46,3 +46,29 @@ C:\Users\comp0705\Desktop\Data\Tren2\Сессия 1\WPF\tren2_Gorodkov\Tren2\obj
 C:\Users\comp0705\Desktop\Data\Tren2\Сессия 1\WPF\tren2_Gorodkov\Tren2\obj\Debug\HomePage.baml
 C:\Users\comp0705\Desktop\Data\Tren2\Сессия 1\WPF\tren2_Gorodkov\Tren2\obj\Debug\AddPage.g.cs
 C:\Users\comp0705\Desktop\Data\Tren2\Сессия 1\WPF\tren2_Gorodkov\Tren2\obj\Debug\AddPage.baml
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\bin\Debug\tren2_Gorodkov.exe.config
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\bin\Debug\tren2_Gorodkov.exe
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\bin\Debug\tren2_Gorodkov.pdb
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\bin\Debug\EntityFramework.dll
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\bin\Debug\EntityFramework.xml
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\tren2_Gorodkov.csproj.AssemblyReference.cache
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\AddPage.g.cs
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\HomePage.g.cs
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\MainWindow.g.cs
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\App.g.cs
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\tren2_Gorodkov_Content.g.cs
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\tren2_Gorodkov_MarkupCompile.cache
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\tren2_Gorodkov_MarkupCompile.lref
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\AddPage.baml
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\HomePage.baml
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\MainWindow.baml
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\tren2_Gorodkov.g.resources
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\tren2_Gorodkov.Properties.Resources.resources
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\tren2_Gorodkov.csproj.GenerateResource.cache
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\tren2_Gorodkov.csproj.CoreCompileInputs.cache
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\tren2_Gorodkov.csproj.CopyComplete
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\tren2_Gorodkov.exe
+C:\Users\comp0705\Desktop\Data\Tren3\WPF\Tren2\obj\Debug\tren2_Gorodkov.pdb
